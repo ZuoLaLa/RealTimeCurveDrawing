@@ -24,6 +24,8 @@ namespace Test
             yDataList = new List<float>();
             time = 0;
             data = 0;
+
+            timerStatus.Start();
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -46,13 +48,14 @@ namespace Test
         private void timerData_Tick(object sender, EventArgs e)
         {
             time += 1;
-            data=(float)(Math.Sin(time / 10f) * 200);
+            data = (float)(Math.Sin(time / 10f) * 200);
 
             xDataList.Add(time);
             yDataList.Add(data);
 
             tbCurrentData.Text = data.ToString();
             rtgControl.Refresh();
+            tsMsg.Text = rtgControl.MsgOutput;
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -99,6 +102,11 @@ namespace Test
         {
             rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.DragMode;
             rtgControl.Refresh();
+        }
+
+        private void timerStatus_Tick(object sender, EventArgs e)
+        {
+            tsMsg.Text = rtgControl.MsgOutput;
         }
     }
 }
