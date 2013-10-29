@@ -15,6 +15,10 @@ namespace Test
         private List<float> yDataList;
         private float time;
         private float data;
+        private float xDataMin;
+        private float xDataMax;
+        private float yDataMin;
+        private float yDataMax;
 
         public TestForm()
         {
@@ -52,10 +56,35 @@ namespace Test
 
             xDataList.Add(time);
             yDataList.Add(data);
+            getDataLimits();
 
             tbCurrentData.Text = data.ToString();
+            rtgControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
             rtgControl.Refresh();
             tsMsg.Text = rtgControl.MsgOutput;
+        }
+
+        private void getDataLimits()
+        {
+            int num = xDataList.Count;
+            if (num == 1)
+            {
+                xDataMin = xDataList[0];
+                xDataMax = xDataList[0];
+                yDataMin = yDataList[0];
+                yDataMax = yDataList[0];
+            }
+            else
+            {
+                xDataMin = (xDataList[num - 1] < xDataMin) ?
+                    xDataList[num - 1] : xDataMin;
+                xDataMax = (xDataList[num - 1] > xDataMax) ?
+                    xDataList[num - 1] : xDataMax;
+                yDataMin = (yDataList[num - 1] < yDataMin) ?
+                    yDataList[num - 1] : yDataMin;
+                yDataMax = (yDataList[num - 1] > yDataMax) ?
+                    yDataList[num - 1] : yDataMax;
+            }
         }
 
         private void btnStop_Click(object sender, EventArgs e)
