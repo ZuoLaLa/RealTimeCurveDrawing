@@ -137,5 +137,11 @@ namespace Test
         {
             tsMsg.Text = rtgControl.MsgOutput;
         }
+
+        private void btnGrid_Click(object sender, EventArgs e)
+        {
+            rtgControl.ShowGrid = !rtgControl.ShowGrid;
+            rtgControl.Refresh();
+        }
     }
 }
