@@ -29,27 +29,58 @@ namespace Test
             time = 0;
             data = 0;
 
+            tslGraphType.Alignment = ToolStripItemAlignment.Right;
             timerStatus.Start();
+
+            btnCurve1.Enabled = true;
+            btnCurve2.Enabled = true;
+            btnStop.Enabled = false;
+            btnClear.Enabled = false;
+
+            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.FixedMoveMode;
+            btnFixedMove.Enabled = false;
+            btnGlobal.Enabled = true;
+            btnDrag.Enabled = true;
+            btnZoomIn.Enabled = true;
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private void btnCurve1_Click(object sender, EventArgs e)
         {
             xDataList.Clear();
             yDataList.Clear();
 
             rtgControl.GraphClear();
             rtgControl.ResetAxis();
-            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.FixedMoveMode;
             rtgControl.XDataList = this.xDataList;
             rtgControl.YDataList = this.yDataList;
 
-            btnStart.Enabled = false;
+            btnCurve1.Enabled = false;
+            btnCurve2.Enabled = false;
             btnStop.Enabled = true;
             tbCurrentData.Text = "开始采样";
-            timerData.Start();
+            time = 0;
+            timerData1.Start();
         }
 
-        private void timerData_Tick(object sender, EventArgs e)
+        private void btnCurve2_Click(object sender, EventArgs e)
+        {
+            xDataList.Clear();
+            yDataList.Clear();
+
+            rtgControl.GraphClear();
+            rtgControl.ResetAxis();
+            rtgControl.XDataList = this.xDataList;
+            rtgControl.YDataList = this.yDataList;
+
+            btnCurve1.Enabled = false;
+            btnCurve2.Enabled = false;
+            btnStop.Enabled = true;
+            tbCurrentData.Text = "开始采样";
+            time = 0;
+            timerData2.Start();
+        }
+
+        private void timerData1_Tick(object sender, EventArgs e)
         {
             time += 1;
             data = (float)(Math.Sin(time / 10f) * 200);
@@ -62,6 +93,43 @@ namespace Test
             rtgControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
             rtgControl.Refresh();
             tsMsg.Text = rtgControl.MsgOutput;
+        }
+
+        private void timerData2_Tick(object sender, EventArgs e)
+        {
+            time += 1;
+            data = rectWave(time);
+
+            xDataList.Add(time);
+            yDataList.Add(data);
+            getDataLimits();
+
+            tbCurrentData.Text = data.ToString();
+            rtgControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
+            rtgControl.Refresh();
+            tsMsg.Text = rtgControl.MsgOutput;
+        }
+        /// <summary>
+        /// 方波发生器
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        private float rectWave(float time)
+        {
+            int t = Convert.ToInt32(time);
+            int m = t % 40;
+            float d;
+
+            if (m < 20)
+            {
+                d = 180;
+            }
+            else
+            {
+                d = -180;
+            }
+
+            return d;
         }
 
         private void getDataLimits()
@@ -89,29 +157,46 @@ namespace Test
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            timerData.Stop();
+            timerData1.Stop();
             time = 0;
 
             btnStop.Enabled = false;
-            btnStart.Enabled = true;
+            btnClear.Enabled = true;
+            btnCurve1.Enabled = true;
+            btnCurve2.Enabled = true;
         }
 
         private void btnGlobal_Click(object sender, EventArgs e)
         {
             rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.GlobalMode;
             rtgControl.Refresh();
+
+            btnFixedMove.Enabled = true;
+            btnGlobal.Enabled = false;
+            btnDrag.Enabled = true;
+            btnZoomIn.Enabled = true;
         }
 
         private void btnFixedMove_Click(object sender, EventArgs e)
         {
             rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.FixedMoveMode;
             rtgControl.Refresh();
+
+            btnFixedMove.Enabled = false;
+            btnGlobal.Enabled = true;
+            btnDrag.Enabled = true;
+            btnZoomIn.Enabled = true;
         }
 
         private void btnZoomIn_Click(object sender, EventArgs e)
         {
             rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.RectZoomInMode;
             rtgControl.Refresh();
+
+            btnFixedMove.Enabled = true;
+            btnGlobal.Enabled = true;
+            btnDrag.Enabled = true;
+            btnZoomIn.Enabled = false;
         }
 
         private void btnInitialWidth_Click(object sender, EventArgs e)
@@ -131,17 +216,34 @@ namespace Test
         {
             rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.DragMode;
             rtgControl.Refresh();
+
+            btnFixedMove.Enabled = true;
+            btnGlobal.Enabled = true;
+            btnDrag.Enabled = false;
+            btnZoomIn.Enabled = true;
         }
 
         private void timerStatus_Tick(object sender, EventArgs e)
         {
             tsMsg.Text = rtgControl.MsgOutput;
+            tslGraphType.Text = rtgControl.GraphType.ToString();
         }
 
         private void btnGrid_Click(object sender, EventArgs e)
         {
             rtgControl.ShowGrid = !rtgControl.ShowGrid;
             rtgControl.Refresh();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            xDataList.Clear();
+            yDataList.Clear();
+
+            rtgControl.GraphClear();
+            rtgControl.ResetAxis();
+
+            btnClear.Enabled = false;
         }
     }
 }

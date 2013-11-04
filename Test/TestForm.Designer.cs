@@ -29,47 +29,49 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.timerData = new System.Windows.Forms.Timer(this.components);
+            this.btnCurve1 = new System.Windows.Forms.Button();
+            this.timerData1 = new System.Windows.Forms.Timer(this.components);
             this.tbCurrentData = new System.Windows.Forms.TextBox();
             this.labelCurrentData = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnGlobal = new System.Windows.Forms.Button();
             this.btnFixedMove = new System.Windows.Forms.Button();
             this.btnZoomIn = new System.Windows.Forms.Button();
-            this.btnInitialWidth = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
             this.btnDrag = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tsMsg = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.rtgControl = new RealTimeGraph.RTGControl();
             this.btnGrid = new System.Windows.Forms.Button();
+            this.btnCurve2 = new System.Windows.Forms.Button();
+            this.timerData2 = new System.Windows.Forms.Timer(this.components);
+            this.btnClear = new System.Windows.Forms.Button();
+            this.tslGraphType = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnStart
+            // btnCurve1
             // 
-            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(587, 12);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 25);
-            this.btnStart.TabIndex = 1;
-            this.btnStart.Text = "&Start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.btnCurve1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCurve1.Location = new System.Drawing.Point(590, 11);
+            this.btnCurve1.Name = "btnCurve1";
+            this.btnCurve1.Size = new System.Drawing.Size(75, 23);
+            this.btnCurve1.TabIndex = 1;
+            this.btnCurve1.Text = "Curve &1";
+            this.btnCurve1.UseVisualStyleBackColor = true;
+            this.btnCurve1.Click += new System.EventHandler(this.btnCurve1_Click);
             // 
-            // timerData
+            // timerData1
             // 
-            this.timerData.Interval = 200;
-            this.timerData.Tick += new System.EventHandler(this.timerData_Tick);
+            this.timerData1.Interval = 200;
+            this.timerData1.Tick += new System.EventHandler(this.timerData1_Tick);
             // 
             // tbCurrentData
             // 
             this.tbCurrentData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbCurrentData.Location = new System.Drawing.Point(584, 57);
+            this.tbCurrentData.Location = new System.Drawing.Point(582, 87);
             this.tbCurrentData.Name = "tbCurrentData";
-            this.tbCurrentData.Size = new System.Drawing.Size(83, 20);
+            this.tbCurrentData.Size = new System.Drawing.Size(83, 21);
             this.tbCurrentData.TabIndex = 2;
             this.tbCurrentData.Text = "未开始采样";
             // 
@@ -77,30 +79,29 @@
             // 
             this.labelCurrentData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCurrentData.AutoSize = true;
-            this.labelCurrentData.Location = new System.Drawing.Point(584, 41);
+            this.labelCurrentData.Location = new System.Drawing.Point(582, 72);
             this.labelCurrentData.Name = "labelCurrentData";
-            this.labelCurrentData.Size = new System.Drawing.Size(70, 13);
+            this.labelCurrentData.Size = new System.Drawing.Size(83, 12);
             this.labelCurrentData.TabIndex = 3;
             this.labelCurrentData.Text = "Current Data:";
             // 
             // btnStop
             // 
             this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(587, 83);
+            this.btnStop.Location = new System.Drawing.Point(590, 114);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 25);
+            this.btnStop.Size = new System.Drawing.Size(75, 23);
             this.btnStop.TabIndex = 4;
-            this.btnStop.Text = "S&top";
+            this.btnStop.Text = "Sto&p";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnGlobal
             // 
-            this.btnGlobal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGlobal.Location = new System.Drawing.Point(587, 194);
+            this.btnGlobal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGlobal.Location = new System.Drawing.Point(590, 253);
             this.btnGlobal.Name = "btnGlobal";
-            this.btnGlobal.Size = new System.Drawing.Size(75, 23);
+            this.btnGlobal.Size = new System.Drawing.Size(75, 21);
             this.btnGlobal.TabIndex = 5;
             this.btnGlobal.Text = "&Global Mode";
             this.btnGlobal.UseVisualStyleBackColor = true;
@@ -108,10 +109,10 @@
             // 
             // btnFixedMove
             // 
-            this.btnFixedMove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFixedMove.Location = new System.Drawing.Point(587, 223);
+            this.btnFixedMove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFixedMove.Location = new System.Drawing.Point(590, 280);
             this.btnFixedMove.Name = "btnFixedMove";
-            this.btnFixedMove.Size = new System.Drawing.Size(75, 23);
+            this.btnFixedMove.Size = new System.Drawing.Size(75, 21);
             this.btnFixedMove.TabIndex = 5;
             this.btnFixedMove.Text = "&Fixed Move";
             this.btnFixedMove.UseVisualStyleBackColor = true;
@@ -119,43 +120,21 @@
             // 
             // btnZoomIn
             // 
-            this.btnZoomIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnZoomIn.Location = new System.Drawing.Point(587, 252);
+            this.btnZoomIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnZoomIn.Location = new System.Drawing.Point(590, 307);
             this.btnZoomIn.Name = "btnZoomIn";
-            this.btnZoomIn.Size = new System.Drawing.Size(75, 23);
+            this.btnZoomIn.Size = new System.Drawing.Size(75, 21);
             this.btnZoomIn.TabIndex = 6;
             this.btnZoomIn.Text = "&Zoom In";
             this.btnZoomIn.UseVisualStyleBackColor = true;
             this.btnZoomIn.Click += new System.EventHandler(this.btnZoomIn_Click);
             // 
-            // btnInitialWidth
-            // 
-            this.btnInitialWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInitialWidth.Location = new System.Drawing.Point(587, 335);
-            this.btnInitialWidth.Name = "btnInitialWidth";
-            this.btnInitialWidth.Size = new System.Drawing.Size(75, 23);
-            this.btnInitialWidth.TabIndex = 7;
-            this.btnInitialWidth.Text = "Initial &Width";
-            this.btnInitialWidth.UseVisualStyleBackColor = true;
-            this.btnInitialWidth.Click += new System.EventHandler(this.btnInitialWidth_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReset.Location = new System.Drawing.Point(587, 364);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 8;
-            this.btnReset.Text = "&Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // btnDrag
             // 
-            this.btnDrag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDrag.Location = new System.Drawing.Point(587, 283);
+            this.btnDrag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDrag.Location = new System.Drawing.Point(590, 335);
             this.btnDrag.Name = "btnDrag";
-            this.btnDrag.Size = new System.Drawing.Size(75, 25);
+            this.btnDrag.Size = new System.Drawing.Size(75, 23);
             this.btnDrag.TabIndex = 10;
             this.btnDrag.Text = "&Drag";
             this.btnDrag.UseVisualStyleBackColor = true;
@@ -164,8 +143,10 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMsg});
-            this.statusStrip.Location = new System.Drawing.Point(0, 419);
+            this.tsMsg,
+            this.tslGraphType});
+            this.statusStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.statusStrip.Location = new System.Drawing.Point(0, 385);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(671, 22);
             this.statusStrip.TabIndex = 11;
@@ -174,12 +155,11 @@
             // tsMsg
             // 
             this.tsMsg.Name = "tsMsg";
-            this.tsMsg.Size = new System.Drawing.Size(87, 17);
+            this.tsMsg.Size = new System.Drawing.Size(98, 17);
             this.tsMsg.Text = "Curve Message";
             // 
             // timerStatus
             // 
-            this.timerStatus.Interval = 1000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
             // rtgControl
@@ -191,44 +171,81 @@
             this.rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.FixedMoveMode;
             this.rtgControl.GraphXTitle = "时间(s)";
             this.rtgControl.GraphYTitle = "距离(mm)";
-            this.rtgControl.Location = new System.Drawing.Point(13, 13);
+            this.rtgControl.Location = new System.Drawing.Point(13, 12);
             this.rtgControl.Name = "rtgControl";
-            this.rtgControl.Size = new System.Drawing.Size(565, 375);
+            this.rtgControl.Size = new System.Drawing.Size(565, 346);
             this.rtgControl.TabIndex = 9;
             this.rtgControl.XDataAccuracy = 1F;
+            this.rtgControl.XEndInitial = 100F;
+            this.rtgControl.XStartInitial = 0F;
             this.rtgControl.YDataAccuracy = 0.1F;
+            this.rtgControl.YEndInitial = 200F;
+            this.rtgControl.YStartInitial = 0F;
             // 
             // btnGrid
             // 
             this.btnGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGrid.Location = new System.Drawing.Point(587, 132);
+            this.btnGrid.Location = new System.Drawing.Point(590, 187);
             this.btnGrid.Name = "btnGrid";
-            this.btnGrid.Size = new System.Drawing.Size(75, 23);
+            this.btnGrid.Size = new System.Drawing.Size(75, 21);
             this.btnGrid.TabIndex = 12;
-            this.btnGrid.Text = "Gri&d";
+            this.btnGrid.Text = "Gr&id";
             this.btnGrid.UseVisualStyleBackColor = true;
             this.btnGrid.Click += new System.EventHandler(this.btnGrid_Click);
             // 
+            // btnCurve2
+            // 
+            this.btnCurve2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCurve2.Location = new System.Drawing.Point(590, 40);
+            this.btnCurve2.Name = "btnCurve2";
+            this.btnCurve2.Size = new System.Drawing.Size(75, 23);
+            this.btnCurve2.TabIndex = 1;
+            this.btnCurve2.Text = "Curve &2";
+            this.btnCurve2.UseVisualStyleBackColor = true;
+            this.btnCurve2.Click += new System.EventHandler(this.btnCurve2_Click);
+            // 
+            // timerData2
+            // 
+            this.timerData2.Interval = 200;
+            this.timerData2.Tick += new System.EventHandler(this.timerData2_Tick);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.Location = new System.Drawing.Point(590, 144);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "&Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // tslGraphType
+            // 
+            this.tslGraphType.Name = "tslGraphType";
+            this.tslGraphType.Size = new System.Drawing.Size(76, 17);
+            this.tslGraphType.Text = "Graph Type";
+            // 
             // TestForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(671, 441);
+            this.ClientSize = new System.Drawing.Size(671, 407);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnGrid);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.btnDrag);
             this.Controls.Add(this.rtgControl);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnInitialWidth);
             this.Controls.Add(this.btnZoomIn);
             this.Controls.Add(this.btnFixedMove);
             this.Controls.Add(this.btnGlobal);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.labelCurrentData);
             this.Controls.Add(this.tbCurrentData);
-            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.btnCurve2);
+            this.Controls.Add(this.btnCurve1);
             this.Name = "TestForm";
-            this.Text = "Form1";
+            this.Text = "Real Time Graph Test";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -238,22 +255,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Timer timerData;
+        private System.Windows.Forms.Button btnCurve1;
+        private System.Windows.Forms.Timer timerData1;
         private System.Windows.Forms.TextBox tbCurrentData;
         private System.Windows.Forms.Label labelCurrentData;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnGlobal;
         private System.Windows.Forms.Button btnFixedMove;
         private System.Windows.Forms.Button btnZoomIn;
-        private System.Windows.Forms.Button btnInitialWidth;
-        private System.Windows.Forms.Button btnReset;
         private RealTimeGraph.RTGControl rtgControl;
         private System.Windows.Forms.Button btnDrag;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel tsMsg;
         private System.Windows.Forms.Timer timerStatus;
         private System.Windows.Forms.Button btnGrid;
+        private System.Windows.Forms.Button btnCurve2;
+        private System.Windows.Forms.Timer timerData2;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ToolStripStatusLabel tslGraphType;
 
     }
 }
