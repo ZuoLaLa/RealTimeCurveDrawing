@@ -245,5 +245,32 @@ namespace Test
 
             btnClear.Enabled = false;
         }
+
+        private void btnCurve3_Click(object sender, EventArgs e)
+        {
+            xDataList.Clear();
+            yDataList.Clear();
+
+            rtgControl.GraphClear();
+            rtgControl.ResetAxis();
+            rtgControl.XDataList = this.xDataList;
+            rtgControl.YDataList = this.yDataList;
+
+            xDataList.Add(0);
+            yDataList.Add(20);
+            xDataList.Add(10);
+            yDataList.Add(100);
+            xDataList.Add(30);
+            yDataList.Add(100);
+
+            getDataLimits();
+            rtgControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
+            rtgControl.XStartInitial = xDataMin;
+            rtgControl.XEndInitial = xDataMax;
+            rtgControl.YStartInitial = yDataMin;
+            rtgControl.YEndInitial = yDataMax;
+            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.GlobalMode;
+            rtgControl.Refresh();
+        }
     }
 }
