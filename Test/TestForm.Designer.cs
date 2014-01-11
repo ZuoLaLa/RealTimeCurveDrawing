@@ -43,11 +43,8 @@
             this.tslGraphType = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.btnGrid = new System.Windows.Forms.Button();
-            this.btnCurve2 = new System.Windows.Forms.Button();
-            this.timerData2 = new System.Windows.Forms.Timer(this.components);
             this.btnClear = new System.Windows.Forms.Button();
             this.rtgControl = new RealTimeGraph.RTGControl();
-            this.btnCurve3 = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,13 +153,13 @@
             // tsMsg
             // 
             this.tsMsg.Name = "tsMsg";
-            this.tsMsg.Size = new System.Drawing.Size(98, 17);
+            this.tsMsg.Size = new System.Drawing.Size(87, 17);
             this.tsMsg.Text = "Curve Message";
             // 
             // tslGraphType
             // 
             this.tslGraphType.Name = "tslGraphType";
-            this.tslGraphType.Size = new System.Drawing.Size(76, 17);
+            this.tslGraphType.Size = new System.Drawing.Size(68, 17);
             this.tslGraphType.Text = "Graph Type";
             // 
             // timerStatus
@@ -179,22 +176,6 @@
             this.btnGrid.Text = "Gr&id";
             this.btnGrid.UseVisualStyleBackColor = true;
             this.btnGrid.Click += new System.EventHandler(this.btnGrid_Click);
-            // 
-            // btnCurve2
-            // 
-            this.btnCurve2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCurve2.Location = new System.Drawing.Point(590, 40);
-            this.btnCurve2.Name = "btnCurve2";
-            this.btnCurve2.Size = new System.Drawing.Size(75, 23);
-            this.btnCurve2.TabIndex = 1;
-            this.btnCurve2.Text = "Curve &2";
-            this.btnCurve2.UseVisualStyleBackColor = true;
-            this.btnCurve2.Click += new System.EventHandler(this.btnCurve2_Click);
-            // 
-            // timerData2
-            // 
-            this.timerData2.Interval = 200;
-            this.timerData2.Tick += new System.EventHandler(this.timerData2_Tick);
             // 
             // btnClear
             // 
@@ -227,17 +208,6 @@
             this.rtgControl.YEndInitial = 200F;
             this.rtgControl.YStartInitial = 0F;
             // 
-            // btnCurve3
-            // 
-            this.btnCurve3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCurve3.Location = new System.Drawing.Point(590, 69);
-            this.btnCurve3.Name = "btnCurve3";
-            this.btnCurve3.Size = new System.Drawing.Size(75, 23);
-            this.btnCurve3.TabIndex = 1;
-            this.btnCurve3.Text = "Curve &3";
-            this.btnCurve3.UseVisualStyleBackColor = true;
-            this.btnCurve3.Click += new System.EventHandler(this.btnCurve3_Click);
-            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -254,8 +224,6 @@
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.labelCurrentData);
             this.Controls.Add(this.tbCurrentData);
-            this.Controls.Add(this.btnCurve3);
-            this.Controls.Add(this.btnCurve2);
             this.Controls.Add(this.btnCurve1);
             this.Name = "TestForm";
             this.Text = "Real Time Graph Test";
@@ -282,11 +250,8 @@
         private System.Windows.Forms.ToolStripStatusLabel tsMsg;
         private System.Windows.Forms.Timer timerStatus;
         private System.Windows.Forms.Button btnGrid;
-        private System.Windows.Forms.Button btnCurve2;
-        private System.Windows.Forms.Timer timerData2;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.ToolStripStatusLabel tslGraphType;
-        private System.Windows.Forms.Button btnCurve3;
 
     }
 }

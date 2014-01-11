@@ -33,7 +33,6 @@ namespace Test
             timerStatus.Start();
 
             btnCurve1.Enabled = true;
-            btnCurve2.Enabled = true;
             btnStop.Enabled = false;
             btnClear.Enabled = false;
 
@@ -55,29 +54,10 @@ namespace Test
             rtgControl.YDataList = this.yDataList;
 
             btnCurve1.Enabled = false;
-            btnCurve2.Enabled = false;
             btnStop.Enabled = true;
             tbCurrentData.Text = "开始采样";
             time = 0;
             timerData1.Start();
-        }
-
-        private void btnCurve2_Click(object sender, EventArgs e)
-        {
-            xDataList.Clear();
-            yDataList.Clear();
-
-            rtgControl.GraphClear();
-            rtgControl.ResetAxis();
-            rtgControl.XDataList = this.xDataList;
-            rtgControl.YDataList = this.yDataList;
-
-            btnCurve1.Enabled = false;
-            btnCurve2.Enabled = false;
-            btnStop.Enabled = true;
-            tbCurrentData.Text = "开始采样";
-            time = 0;
-            timerData2.Start();
         }
 
         private void timerData1_Tick(object sender, EventArgs e)
@@ -95,20 +75,6 @@ namespace Test
             tsMsg.Text = rtgControl.MsgOutput;
         }
 
-        private void timerData2_Tick(object sender, EventArgs e)
-        {
-            time += 1;
-            data = rectWave(time);
-
-            xDataList.Add(time);
-            yDataList.Add(data);
-            getDataLimits();
-
-            tbCurrentData.Text = data.ToString();
-            rtgControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
-            rtgControl.Refresh();
-            tsMsg.Text = rtgControl.MsgOutput;
-        }
         /// <summary>
         /// 方波发生器
         /// </summary>
@@ -163,7 +129,6 @@ namespace Test
             btnStop.Enabled = false;
             btnClear.Enabled = true;
             btnCurve1.Enabled = true;
-            btnCurve2.Enabled = true;
         }
 
         private void btnGlobal_Click(object sender, EventArgs e)
@@ -246,31 +211,5 @@ namespace Test
             btnClear.Enabled = false;
         }
 
-        private void btnCurve3_Click(object sender, EventArgs e)
-        {
-            xDataList.Clear();
-            yDataList.Clear();
-
-            rtgControl.GraphClear();
-            rtgControl.ResetAxis();
-            rtgControl.XDataList = this.xDataList;
-            rtgControl.YDataList = this.yDataList;
-
-            xDataList.Add(0);
-            yDataList.Add(20);
-            xDataList.Add(10);
-            yDataList.Add(100);
-            xDataList.Add(30);
-            yDataList.Add(100);
-
-            getDataLimits();
-            rtgControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
-            rtgControl.XStartInitial = xDataMin;
-            rtgControl.XEndInitial = xDataMax;
-            rtgControl.YStartInitial = yDataMin;
-            rtgControl.YEndInitial = yDataMax;
-            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.GlobalMode;
-            rtgControl.Refresh();
-        }
     }
 }
