@@ -44,7 +44,7 @@
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.btnGrid = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.rtgControl = new RealTimeGraph.RTGControl();
+            this.graphControl = new RealTimeGraph.GraphControl();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,25 +188,25 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // rtgControl
+            // GraphControl
             // 
-            this.rtgControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.graphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtgControl.GraphTitle = "位移实时显示曲线";
-            this.rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.FixedMoveMode;
-            this.rtgControl.GraphXTitle = "时间(s)";
-            this.rtgControl.GraphYTitle = "距离(mm)";
-            this.rtgControl.Location = new System.Drawing.Point(13, 12);
-            this.rtgControl.Name = "rtgControl";
-            this.rtgControl.Size = new System.Drawing.Size(565, 346);
-            this.rtgControl.TabIndex = 9;
-            this.rtgControl.XDataAccuracy = 1F;
-            this.rtgControl.XEndInitial = 100F;
-            this.rtgControl.XStartInitial = 0F;
-            this.rtgControl.YDataAccuracy = 0.1F;
-            this.rtgControl.YEndInitial = 200F;
-            this.rtgControl.YStartInitial = 0F;
+            this.graphControl.GraphTitle = "位移实时显示曲线";
+            this.graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.FixedMoveMode;
+            this.graphControl.GraphXTitle = "时间(s)";
+            this.graphControl.GraphYTitle = "距离(mm)";
+            this.graphControl.Location = new System.Drawing.Point(13, 12);
+            this.graphControl.Name = "graphControl";
+            this.graphControl.Size = new System.Drawing.Size(565, 346);
+            this.graphControl.TabIndex = 9;
+            this.graphControl.XDataAccuracy = 1F;
+            this.graphControl.XEndInitial = 100F;
+            this.graphControl.XStartInitial = 0F;
+            this.graphControl.YDataAccuracy = 0.1F;
+            this.graphControl.YEndInitial = 200F;
+            this.graphControl.YStartInitial = 0F;
             // 
             // TestForm
             // 
@@ -217,7 +217,7 @@
             this.Controls.Add(this.btnGrid);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.btnDrag);
-            this.Controls.Add(this.rtgControl);
+            this.Controls.Add(this.graphControl);
             this.Controls.Add(this.btnZoomIn);
             this.Controls.Add(this.btnFixedMove);
             this.Controls.Add(this.btnGlobal);
@@ -244,7 +244,7 @@
         private System.Windows.Forms.Button btnGlobal;
         private System.Windows.Forms.Button btnFixedMove;
         private System.Windows.Forms.Button btnZoomIn;
-        private RealTimeGraph.RTGControl rtgControl;
+        private RealTimeGraph.GraphControl graphControl;
         private System.Windows.Forms.Button btnDrag;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel tsMsg;

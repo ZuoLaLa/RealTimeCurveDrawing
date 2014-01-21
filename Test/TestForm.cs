@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Test
 {
     public partial class TestForm : Form
     {
-        private List<float> xDataList;
-        private List<float> yDataList;
+        private readonly List<float> xDataList;
+        private readonly List<float> yDataList;
         private float time;
         private float data;
         private float xDataMin;
@@ -36,7 +31,7 @@ namespace Test
             btnStop.Enabled = false;
             btnClear.Enabled = false;
 
-            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.FixedMoveMode;
+            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.FixedMoveMode;
             btnFixedMove.Enabled = false;
             btnGlobal.Enabled = true;
             btnDrag.Enabled = true;
@@ -48,14 +43,14 @@ namespace Test
             xDataList.Clear();
             yDataList.Clear();
 
-            rtgControl.GraphClear();
-            rtgControl.ResetAxis();
-            rtgControl.XDataList = this.xDataList;
-            rtgControl.YDataList = this.yDataList;
+            graphControl.GraphClear();
+            graphControl.ResetAxis();
+            graphControl.XDataList = this.xDataList;
+            graphControl.YDataList = this.yDataList;
 
             btnCurve1.Enabled = false;
             btnStop.Enabled = true;
-            tbCurrentData.Text = "开始采样";
+            tbCurrentData.Text = @"开始采样";
             time = 0;
             timerData1.Start();
         }
@@ -67,38 +62,15 @@ namespace Test
 
             xDataList.Add(time);
             yDataList.Add(data);
-            getDataLimits();
+            GetDataLimits();
 
             tbCurrentData.Text = data.ToString();
-            rtgControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
-            rtgControl.Refresh();
-            tsMsg.Text = rtgControl.MsgOutput;
+            graphControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
+            graphControl.Refresh();
+            tsMsg.Text = graphControl.MsgOutput;
         }
 
-        /// <summary>
-        /// 方波发生器
-        /// </summary>
-        /// <param name="time"></param>
-        /// <returns></returns>
-        private float rectWave(float time)
-        {
-            int t = Convert.ToInt32(time);
-            int m = t % 40;
-            float d;
-
-            if (m < 20)
-            {
-                d = 180;
-            }
-            else
-            {
-                d = -180;
-            }
-
-            return d;
-        }
-
-        private void getDataLimits()
+        private void GetDataLimits()
         {
             int num = xDataList.Count;
             if (num == 1)
@@ -133,8 +105,8 @@ namespace Test
 
         private void btnGlobal_Click(object sender, EventArgs e)
         {
-            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.GlobalMode;
-            rtgControl.Refresh();
+            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.GlobalMode;
+            graphControl.Refresh();
 
             btnFixedMove.Enabled = true;
             btnGlobal.Enabled = false;
@@ -144,8 +116,8 @@ namespace Test
 
         private void btnFixedMove_Click(object sender, EventArgs e)
         {
-            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.FixedMoveMode;
-            rtgControl.Refresh();
+            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.FixedMoveMode;
+            graphControl.Refresh();
 
             btnFixedMove.Enabled = false;
             btnGlobal.Enabled = true;
@@ -155,8 +127,8 @@ namespace Test
 
         private void btnZoomIn_Click(object sender, EventArgs e)
         {
-            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.RectZoomInMode;
-            rtgControl.Refresh();
+            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.RectZoomInMode;
+            graphControl.Refresh();
 
             btnFixedMove.Enabled = true;
             btnGlobal.Enabled = true;
@@ -164,23 +136,10 @@ namespace Test
             btnZoomIn.Enabled = false;
         }
 
-        private void btnInitialWidth_Click(object sender, EventArgs e)
-        {
-            rtgControl.ResetAxisXWidth();
-            rtgControl.Refresh();
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.RectZoomInMode;
-            rtgControl.ResetAxis();
-            rtgControl.Refresh();
-        }
-
         private void btnDrag_Click(object sender, EventArgs e)
         {
-            rtgControl.GraphType = RealTimeGraph.RTGControl.GraphTypes.DragMode;
-            rtgControl.Refresh();
+            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.DragMode;
+            graphControl.Refresh();
 
             btnFixedMove.Enabled = true;
             btnGlobal.Enabled = true;
@@ -190,14 +149,14 @@ namespace Test
 
         private void timerStatus_Tick(object sender, EventArgs e)
         {
-            tsMsg.Text = rtgControl.MsgOutput;
-            tslGraphType.Text = rtgControl.GraphType.ToString();
+            tsMsg.Text = graphControl.MsgOutput;
+            tslGraphType.Text = graphControl.GraphType.ToString();
         }
 
         private void btnGrid_Click(object sender, EventArgs e)
         {
-            rtgControl.ShowGrid = !rtgControl.ShowGrid;
-            rtgControl.Refresh();
+            graphControl.ShowGrid = !graphControl.ShowGrid;
+            graphControl.Refresh();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -205,8 +164,8 @@ namespace Test
             xDataList.Clear();
             yDataList.Clear();
 
-            rtgControl.GraphClear();
-            rtgControl.ResetAxis();
+            graphControl.GraphClear();
+            graphControl.ResetAxis();
 
             btnClear.Enabled = false;
         }
