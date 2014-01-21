@@ -1,4 +1,6 @@
-﻿namespace Test
+﻿using RealTimeGraph;
+
+namespace Test
 {
     partial class TestForm
     {
@@ -188,25 +190,25 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // GraphControl
+            // graphControl
             // 
-            this.graphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.graphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.graphControl.AxisXTitle = "时间(s)";
+            this.graphControl.AxisYTitle = "距离(mm)";
             this.graphControl.GraphTitle = "位移实时显示曲线";
-            this.graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.FixedMoveMode;
-            this.graphControl.GraphXTitle = "时间(s)";
-            this.graphControl.GraphYTitle = "距离(mm)";
+            this.graphControl.GraphStyle = GraphMode.FixMoveMode;
+            this.graphControl.InitialMaxX = 100F;
+            this.graphControl.InitialMaxY = 300F;
+            this.graphControl.InitialMinX = 0F;
+            this.graphControl.InitialMinY = 0F;
             this.graphControl.Location = new System.Drawing.Point(13, 12);
             this.graphControl.Name = "graphControl";
             this.graphControl.Size = new System.Drawing.Size(565, 346);
             this.graphControl.TabIndex = 9;
-            this.graphControl.XDataAccuracy = 1F;
-            this.graphControl.XEndInitial = 100F;
-            this.graphControl.XStartInitial = 0F;
+            this.graphControl.XDataAccuracy = 0.1F;
             this.graphControl.YDataAccuracy = 0.1F;
-            this.graphControl.YEndInitial = 200F;
-            this.graphControl.YStartInitial = 0F;
             // 
             // TestForm
             // 

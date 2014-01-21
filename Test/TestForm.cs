@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using RealTimeGraph;
 
 namespace Test
 {
@@ -18,6 +19,7 @@ namespace Test
         public TestForm()
         {
             InitializeComponent();
+            graphControl.ResetDisplayRect();
 
             xDataList = new List<float>();
             yDataList = new List<float>();
@@ -31,7 +33,7 @@ namespace Test
             btnStop.Enabled = false;
             btnClear.Enabled = false;
 
-            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.FixedMoveMode;
+            graphControl.GraphStyle = GraphMode.FixMoveMode;
             btnFixedMove.Enabled = false;
             btnGlobal.Enabled = true;
             btnDrag.Enabled = true;
@@ -44,7 +46,7 @@ namespace Test
             yDataList.Clear();
 
             graphControl.GraphClear();
-            graphControl.ResetAxis();
+            graphControl.ResetDisplayRect();
             graphControl.XDataList = this.xDataList;
             graphControl.YDataList = this.yDataList;
 
@@ -105,7 +107,7 @@ namespace Test
 
         private void btnGlobal_Click(object sender, EventArgs e)
         {
-            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.GlobalMode;
+            graphControl.GraphStyle = GraphMode.GlobalMode;
             graphControl.Refresh();
 
             btnFixedMove.Enabled = true;
@@ -116,7 +118,7 @@ namespace Test
 
         private void btnFixedMove_Click(object sender, EventArgs e)
         {
-            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.FixedMoveMode;
+            graphControl.GraphStyle = GraphMode.FixMoveMode;
             graphControl.Refresh();
 
             btnFixedMove.Enabled = false;
@@ -127,7 +129,7 @@ namespace Test
 
         private void btnZoomIn_Click(object sender, EventArgs e)
         {
-            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.RectZoomInMode;
+            graphControl.GraphStyle = GraphMode.RectZoomInMode;
             graphControl.Refresh();
 
             btnFixedMove.Enabled = true;
@@ -138,7 +140,7 @@ namespace Test
 
         private void btnDrag_Click(object sender, EventArgs e)
         {
-            graphControl.GraphType = RealTimeGraph.GraphControl.GraphTypes.DragMode;
+            graphControl.GraphStyle = GraphMode.DragMode;
             graphControl.Refresh();
 
             btnFixedMove.Enabled = true;
@@ -150,12 +152,12 @@ namespace Test
         private void timerStatus_Tick(object sender, EventArgs e)
         {
             tsMsg.Text = graphControl.MsgOutput;
-            tslGraphType.Text = graphControl.GraphType.ToString();
+            tslGraphType.Text = graphControl.GraphStyle.ToString();
         }
 
         private void btnGrid_Click(object sender, EventArgs e)
         {
-            graphControl.ShowGrid = !graphControl.ShowGrid;
+            graphControl.IsShowGrid = !graphControl.IsShowGrid;
             graphControl.Refresh();
         }
 
@@ -165,7 +167,7 @@ namespace Test
             yDataList.Clear();
 
             graphControl.GraphClear();
-            graphControl.ResetAxis();
+            graphControl.ResetDisplayRect();
 
             btnClear.Enabled = false;
         }
