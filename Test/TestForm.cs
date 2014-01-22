@@ -11,10 +11,6 @@ namespace Test
         private readonly List<float> yDataList;
         private float time;
         private float data;
-        private float xDataMin;
-        private float xDataMax;
-        private float yDataMin;
-        private float yDataMax;
 
         public TestForm()
         {
@@ -64,35 +60,10 @@ namespace Test
 
             xDataList.Add(time);
             yDataList.Add(data);
-            GetDataLimits();
 
             tbCurrentData.Text = data.ToString();
-            graphControl.UpdateDataLimits(xDataMin, xDataMax, yDataMin, yDataMax);
             graphControl.Refresh();
             tsMsg.Text = graphControl.MsgOutput;
-        }
-
-        private void GetDataLimits()
-        {
-            int num = xDataList.Count;
-            if (num == 1)
-            {
-                xDataMin = xDataList[0];
-                xDataMax = xDataList[0];
-                yDataMin = yDataList[0];
-                yDataMax = yDataList[0];
-            }
-            else
-            {
-                xDataMin = (xDataList[num - 1] < xDataMin) ?
-                    xDataList[num - 1] : xDataMin;
-                xDataMax = (xDataList[num - 1] > xDataMax) ?
-                    xDataList[num - 1] : xDataMax;
-                yDataMin = (yDataList[num - 1] < yDataMin) ?
-                    yDataList[num - 1] : yDataMin;
-                yDataMax = (yDataList[num - 1] > yDataMax) ?
-                    yDataList[num - 1] : yDataMax;
-            }
         }
 
         private void btnStop_Click(object sender, EventArgs e)

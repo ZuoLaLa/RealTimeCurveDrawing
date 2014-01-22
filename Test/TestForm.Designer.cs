@@ -31,6 +31,7 @@ namespace Test
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
             this.btnCurve1 = new System.Windows.Forms.Button();
             this.timerData1 = new System.Windows.Forms.Timer(this.components);
             this.tbCurrentData = new System.Windows.Forms.TextBox();
@@ -192,13 +193,13 @@ namespace Test
             // 
             // graphControl
             // 
-            this.graphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.graphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.graphControl.AxisXTitle = "时间(s)";
             this.graphControl.AxisYTitle = "距离(mm)";
+            this.graphControl.GraphStyle = RealTimeGraph.GraphMode.FixMoveMode;
             this.graphControl.GraphTitle = "位移实时显示曲线";
-            this.graphControl.GraphStyle = GraphMode.FixMoveMode;
             this.graphControl.InitialMaxX = 100F;
             this.graphControl.InitialMaxY = 300F;
             this.graphControl.InitialMinX = 0F;
@@ -208,7 +209,9 @@ namespace Test
             this.graphControl.Size = new System.Drawing.Size(565, 346);
             this.graphControl.TabIndex = 9;
             this.graphControl.XDataAccuracy = 0.1F;
+            this.graphControl.XDataList = ((System.Collections.Generic.List<float>)(resources.GetObject("graphControl.XDataList")));
             this.graphControl.YDataAccuracy = 0.1F;
+            this.graphControl.YDataList = ((System.Collections.Generic.List<float>)(resources.GetObject("graphControl.YDataList")));
             // 
             // TestForm
             // 
