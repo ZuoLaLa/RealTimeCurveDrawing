@@ -15,7 +15,6 @@ namespace Test
         public TestForm()
         {
             InitializeComponent();
-            graphControl.ResetDisplayRect();
 
             xDataList = new List<float>();
             yDataList = new List<float>();
@@ -41,8 +40,6 @@ namespace Test
             xDataList.Clear();
             yDataList.Clear();
 
-            graphControl.GraphClear();
-            graphControl.ResetDisplayRect();
             graphControl.XDataList = this.xDataList;
             graphControl.YDataList = this.yDataList;
 
@@ -136,9 +133,6 @@ namespace Test
         {
             xDataList.Clear();
             yDataList.Clear();
-
-            graphControl.GraphClear();
-            graphControl.ResetDisplayRect();
 
             btnClear.Enabled = false;
         }
