@@ -39,9 +39,7 @@ namespace Test
         {
             xDataList.Clear();
             yDataList.Clear();
-
-            graphControl.XDataList = this.xDataList;
-            graphControl.YDataList = this.yDataList;
+            graphControl.DataList = new DataPairList<float>(xDataList, yDataList);
 
             btnCurve1.Enabled = false;
             btnStop.Enabled = true;

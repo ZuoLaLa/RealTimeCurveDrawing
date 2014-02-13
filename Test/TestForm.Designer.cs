@@ -201,7 +201,7 @@ namespace Test
             this.graphControl.GraphStyle = RealTimeGraph.GraphMode.FixMoveMode;
             this.graphControl.GraphTitle = "位移实时显示曲线";
             this.graphControl.InitialMaxX = 100F;
-            this.graphControl.InitialMaxY = 300F;
+            this.graphControl.InitialMaxY = 100F;
             this.graphControl.InitialMinX = 0F;
             this.graphControl.InitialMinY = 0F;
             this.graphControl.Location = new System.Drawing.Point(13, 12);
@@ -209,9 +209,7 @@ namespace Test
             this.graphControl.Size = new System.Drawing.Size(565, 346);
             this.graphControl.TabIndex = 9;
             this.graphControl.XDataAccuracy = 0.1F;
-            this.graphControl.XDataList = ((System.Collections.Generic.List<float>)(resources.GetObject("graphControl.XDataList")));
             this.graphControl.YDataAccuracy = 0.1F;
-            this.graphControl.YDataList = ((System.Collections.Generic.List<float>)(resources.GetObject("graphControl.YDataList")));
             // 
             // TestForm
             // 
