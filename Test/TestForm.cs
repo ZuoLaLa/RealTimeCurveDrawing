@@ -158,5 +158,9 @@ namespace Test
             btnClear.Enabled = false;
         }
 
+        private void btnScreenShot_Click(object sender, EventArgs e)
+        {
+            graphControl.ScreenShot();
+        }
     }
 }

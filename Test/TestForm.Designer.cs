@@ -31,7 +31,6 @@ namespace Test
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
             this.btnCurve1 = new System.Windows.Forms.Button();
             this.timerData1 = new System.Windows.Forms.Timer(this.components);
             this.tbCurrentData = new System.Windows.Forms.TextBox();
@@ -47,6 +46,7 @@ namespace Test
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.btnGrid = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnScreenShot = new System.Windows.Forms.Button();
             this.graphControl = new RealTimeGraph.GraphControl();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -191,6 +191,17 @@ namespace Test
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // btnScreenShot
+            // 
+            this.btnScreenShot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScreenShot.Location = new System.Drawing.Point(590, 50);
+            this.btnScreenShot.Name = "btnScreenShot";
+            this.btnScreenShot.Size = new System.Drawing.Size(75, 23);
+            this.btnScreenShot.TabIndex = 14;
+            this.btnScreenShot.Text = "ScreenShot";
+            this.btnScreenShot.UseVisualStyleBackColor = true;
+            this.btnScreenShot.Click += new System.EventHandler(this.btnScreenShot_Click);
+            // 
             // graphControl
             // 
             this.graphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -216,6 +227,7 @@ namespace Test
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 407);
+            this.Controls.Add(this.btnScreenShot);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnGrid);
             this.Controls.Add(this.statusStrip);
@@ -255,6 +267,7 @@ namespace Test
         private System.Windows.Forms.Button btnGrid;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.ToolStripStatusLabel tslGraphType;
+        private System.Windows.Forms.Button btnScreenShot;
 
     }
 }
